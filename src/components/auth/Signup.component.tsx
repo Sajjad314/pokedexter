@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { errorToast, successToast } from "../../utils/Toast";
 import logo from "../../../public/images.png";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import SpinnerLoading from "../common/dataLoader";
 
 const SignupComponent = () => {
@@ -23,9 +23,10 @@ const SignupComponent = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
-  const { data: session, status: sessionStatus } = useSession();
+  const { status: sessionStatus } = useSession();
 
   const handleSignup: SubmitHandler<ISignupPayload> = async (data) => {
+    setIsLoading(true)
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -42,8 +43,10 @@ const SignupComponent = () => {
         successToast("Successfully created an account");
         router.push("/");
       }
+      setIsLoading(false)
     } catch (error) {
       errorToast("There was an error. Try again");
+      setIsLoading(false)
     }
   };
 
@@ -129,9 +132,12 @@ const SignupComponent = () => {
                   type="submit"
                   className="flex items-center justify-center bg-white w-full text-black font-semibold rounded-md  border border-gray-800 px-4 py-2 hover:bg-white hover:text-black hover:border-none"
                 >
-                  Sign Up
+                  {isLoading ? "Signing up...":"Sign Up"}
                 </button>
-                <button className=" bg-green-500 text-white font-semibold rounded-md w-full px-4 py-2">
+                <button onClick={(e) => {
+                    e.preventDefault();
+                    signIn("github");
+                  }} className=" bg-green-500 text-white font-semibold rounded-md w-full px-4 py-2">
                   Continue with Google
                 </button>
               </div>

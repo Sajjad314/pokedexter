@@ -26,6 +26,7 @@ const SigninComponent = () => {
   const { data: session, status: sessionStatus } = useSession();
 
   const handleLogin: SubmitHandler<ILoginPayload> = async (data) => {
+    setIsLoading(true)
     const res = await signIn("credentials", {
       redirect: false,
       email: data.email,
@@ -95,10 +96,11 @@ const SigninComponent = () => {
                   type="submit"
                   className="flex items-center justify-center bg-white w-full text-black font-semibold rounded-md  border border-gray-800 px-4 py-2 hover:bg-white hover:text-black hover:border-none"
                 >
-                  Sign In
+                  {isLoading ? "Signing in...":"Sign In"}
                 </button>
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     signIn("github");
                   }}
                   className=" bg-green-500 text-white font-semibold rounded-md w-full px-4 py-2"

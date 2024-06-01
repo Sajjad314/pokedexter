@@ -34,6 +34,24 @@ export default function Home() {
     if (selectedSearchTerm.length > 0) {
       url += `&search=${selectedSearchTerm}`;
     }
+    try {
+      const res = await fetch(url);
+      if (res.status === 200) {
+        const data = await res.json();
+        let tempPokemon: IPokemonResponse[] = [];
+        data.pokemons.forEach((p: any) => {
+          if (!uniqueIds.has(p.id)) {
+            tempPokemon.push(p);
+            uniqueIds.add(p.id);
+          }
+        });
+
+        setPokemon((prevState) => [...prevState, ...tempPokemon]);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error(error);
+    }
     const res = await fetch(url);
     const data = await res.json();
 

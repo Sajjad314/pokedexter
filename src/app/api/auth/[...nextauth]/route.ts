@@ -11,7 +11,7 @@ interface Credentials {
   password: string;
 }
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       id: "credentials",
@@ -52,7 +52,7 @@ export const authOptions: NextAuthOptions = {
       user,
       account,
     }: {
-      user: NextAuthUser ;
+      user: NextAuthUser;
       account: Account | null;
     }): Promise<boolean> {
       if (!account) {
@@ -87,5 +87,5 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-export const handler = NextAuth(authOptions);
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

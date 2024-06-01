@@ -70,7 +70,7 @@ export default function Home() {
         <div className="flex flex-col gap-2 items-center mt-10 text-white">
           <Image
             src={
-              session?.user && session?.user.image ? session?.user.image : img
+              img
             }
             alt="Profile"
             className="w-24 h-24 rounded-full mb-4"

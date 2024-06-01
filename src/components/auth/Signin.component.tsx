@@ -56,37 +56,37 @@ const SigninComponent = () => {
 
   if(sessionStatus === "unauthenticated"){
     return (
-      <div className="w-full max-w-full text-center">
+      <div className="w-full max-w-full text-center py-8">
         <div className=" flex flex-col gap-1 bg-white shadow-md w-full mx-auto lg:flex-row lg:w-2/3 md:flex-row md:w-2/3">
-          <div className=" flex items-center justify-center w-full  lg:w-1/2  md:w-1/2">
+          <div className=" flex items-center justify-center w-full lg:w-1/2  md:w-1/2">
             <Image src={logo} alt="logo" />
           </div>
-          <div className="bg-gradient-to-b from-gray-600 to-gray-900 p-5  w-full lg:w-1/2 md:w-1/2">
+          <div className=" bg-[#e13d48] p-4 md:p-10 w-full lg:w-1/2 md:w-1/2">
             <form
               onSubmit={handleSubmit(handleLogin)}
               className="flex flex-col gap-3 w-full"
             >
               <div className=" flex flex-col items-start justify-start gap-2 ">
-                <label className=" text-sm font-medium text-white">
+                <label className=" text-sm font-semibold text-white">
                   Email <span className=" ml-1 text-red-500">*</span>
                 </label>
                 <input
                   {...register("email")}
                   type="text"
                   placeholder="Email"
-                  className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-gray-200 "
+                  className="flex h-10 rounded-md border-2 border-input bg-background p-6 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-white placeholder:text-white"
                 />
                 <small className="text-red-500">{errors.email?.message}</small>
               </div>
               <div className=" flex flex-col items-start justify-start gap-2 ">
-                <label className=" text-sm font-medium text-white">
+                <label className=" text-sm font-semibold text-white">
                   Password <span className=" ml-1 text-red-500">*</span>
                 </label>
                 <input
                   {...register("password")}
                   type="password"
                   placeholder="Password"
-                  className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-gray-200 "
+                  className="flex h-10 rounded-md border-input bg-background p-6 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-2 border-white  placeholder:text-white"
                 />
                 <small className="text-red-500">{errors.password?.message}</small>
               </div>
@@ -94,7 +94,7 @@ const SigninComponent = () => {
               <div className=" w-full items-center mt-5 flex flex-col gap-2">
                 <button
                   type="submit"
-                  className="flex items-center justify-center bg-white w-full text-black font-semibold rounded-md  border border-gray-800 px-4 py-2 hover:bg-white hover:text-black hover:border-none"
+                  className="flex items-center justify-center bg-white w-full text-black font-semibold rounded-md  border-gray-800 px-4 py-2 hover:bg-white hover:text-black hover:border-none"
                 >
                   {isLoading ? "Signing in...":"Sign In"}
                 </button>
@@ -103,7 +103,7 @@ const SigninComponent = () => {
                     e.preventDefault();
                     signIn("github");
                   }}
-                  className=" bg-green-500 text-white font-semibold rounded-md w-full px-4 py-2"
+                  className=" bg-black text-white font-semibold rounded-md w-full px-4 py-2"
                 >
                   Continue with Github
                 </button>

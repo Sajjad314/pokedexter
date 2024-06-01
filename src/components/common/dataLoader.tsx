@@ -9,7 +9,7 @@ export default function SpinnerLoading(){
       <Circles 
         height="80"
         width="80"
-        color="green"
+        color="white"
         ariaLabel="loading"
       />  
     </div> 

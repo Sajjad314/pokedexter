@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { useSession } from "next-auth/react";
 import SpinnerLoading from "@/components/common/dataLoader";
+import Card from "@/components/common/Card";
+import PokemonMetadata from "@/components/pokemon/PokemonMetadata";
 
 export default function PokemonDetailsPage() {
   const { name } = useParams();
@@ -81,50 +83,32 @@ export default function PokemonDetailsPage() {
 
   if (sessionStatus === "authenticated") {
     return (
-      <div className="flex items-center justify-center bg-slate-200 w-full ">
+      <div className="flex items-center justify-center bg-[#e13d48] w-full ">
         {pokemonDetails && (
-          <div className=" flex flex-col items-center justify-center gap-10 w-full md:w-2/3 lg:w-2/3  bg-white p-6">
-            <div className=" px-6 py-2 items-center border-b-2 border-gray-700">
-              <h1 className=" text-black font-semibold text-3xl">
+          <div className=" flex flex-col items-center justify-center gap-10 w-full md:w-2/3 lg:w-2/3 p-6">
+            <div className=" px-6 py-2 items-center border-b-2 border-gray-300">
+              <h1 className=" text-white font-semibold text-3xl">
                 {pokemonDetails?.name}{" "}
-                <span className=" text-gray-600 text-3xl ml-3">
+                <span className=" text-gray-300 text-3xl ml-3">
                   #0{pokemonDetails?.id}
                 </span>
               </h1>
             </div>
 
-            <div className="flex flex-col items-center justify-center md:flex-row lg:flex-row gap-4 w-full mx-3">
-              <img
-                src={pokemonDetails?.image}
-                alt={pokemonDetails.name}
-                className=" w-1/2 object-cover"
-              />
-              <div className=" w-full lg:w-1/2 md:w-1/2  flex flex-col gap-4 items-center justify-center">
-                <div className=" w-full grid grid-cols-2 gap-2  bg-blue-500 rounded-lg p-4">
-                  <div className=" flex flex-col">
-                    <h1 className=" text-lg font-normal text-white">ID</h1>
-                    <span className="text-xl font-semibold text-black">
-                      {pokemonDetails.id}
-                    </span>
-                  </div>
-                  <div className=" flex flex-col">
-                    <h1 className=" text-lg font-normal text-white">Name</h1>
-                    <span className="text-xl font-semibold text-black">
-                      {pokemonDetails.name}
-                    </span>
-                  </div>
-                  <div className=" flex flex-col">
-                    <h1 className=" text-lg font-normal text-white">weight</h1>
-                    <span className="text-xl font-semibold text-black">
-                      {pokemonDetails.weight}
-                    </span>
-                  </div>
-                  <div className=" flex flex-col">
-                    <h1 className=" text-lg font-normal text-white">Height</h1>
-                    <span className="text-xl font-semibold text-black">
-                      {pokemonDetails.height}
-                    </span>
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center gap-4 w-full mx-3">
+              <Card className=" h-full">
+                <img
+                  src={pokemonDetails?.image}
+                  alt={pokemonDetails.name}
+                  className=" h-full w-full object-contain"
+                />
+              </Card>
+              <Card className=" bg-white h-full flex flex-col gap-4 p-4 rounded-lg md:col-span-2">
+                <div className=" w-full grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
+                  <PokemonMetadata title={"ID"} value={pokemonDetails.id}/>
+                  <PokemonMetadata title={"Name"} value={pokemonDetails.name}/>
+                  <PokemonMetadata title={"Height"} value={pokemonDetails.height}/>
+                  <PokemonMetadata title={"Weith"} value={pokemonDetails.weight}/>
                 </div>
                 <div className=" w-full items-start justify-start flex flex-col gap-1">
                   <h1 className=" text-xl text-black font font-semibold">
@@ -135,7 +119,7 @@ export default function PokemonDetailsPage() {
                       return (
                         <p
                           key={ability}
-                          className=" px-5 py-2 items-center rounded-xl bg-slate-400 text-black font-normal text-lg"
+                          className=" px-5 py-2 items-center rounded-xl border text-black font-normal text-lg"
                         >
                           {ability}
                         </p>
@@ -152,19 +136,18 @@ export default function PokemonDetailsPage() {
                       return (
                         <div
                           key={type}
-                          className={`px-3 py-1 rounded-lg ${getPokemonTypeColor(
+                          className={`px-5 py-2 items-center rounded-xl border ${getPokemonTypeColor(
                             type
                           )}`}
                         >
-                          <p className="text-md">{type}</p>
+                          <p className="text-md font-normal text-lg">{type}</p>
                         </div>
                       );
                     })}
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className=" w-full md:w-4/5 lg:w-4/5 flex-col items-start justify-start p-4 bg-blue-100">
+              </Card>
+              <Card className=" w-full flex-col items-start justify-start md:col-span-3 p-4">
               <p className=" text-xl mb-8  text-black font-semibold">Stats</p>
               <div className="flex flex-col gap-3 items-center justify-center">
                 {pokemonDetails.stats.map((stat) => {
@@ -180,16 +163,19 @@ export default function PokemonDetailsPage() {
                         className=" w-11/12"
                         completed={stat.basicStat}
                         animateOnRender
-                        customLabel={stat.basicStat.toString() + " / 255"}
+                        bgColor="#e13d48"
+                        customLabel={stat.basicStat.toString()}
                         labelAlignment="center"
-                        baseBgColor="gray"
-                        maxCompleted={255}
+                        baseBgColor="#dcd9d9"
+                        maxCompleted={200}
                       />
                     </div>
                   );
                 })}
               </div>
+            </Card>
             </div>
+            
           </div>
         )}
       </div>

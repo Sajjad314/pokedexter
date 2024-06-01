@@ -71,56 +71,56 @@ const SignupComponent = () => {
           <div className=" flex items-center justify-center w-full  lg:w-1/2  md:w-1/2">
             <Image src={logo} alt="logo" />
           </div>
-          <div className="bg-gradient-to-b from-gray-600 to-gray-900 p-5  w-full lg:w-1/2 md:w-1/2">
+          <div className=" bg-[#e13d48] p-4 md:p-10 w-full lg:w-1/2 md:w-1/2">
             <form
               onSubmit={handleSubmit(handleSignup)}
               className="flex flex-col gap-3 w-full"
             >
               <div className=" flex flex-col items-start justify-start gap-2 ">
-                <label className=" text-sm font-medium text-white">
+                <label className=" text-sm font-semibold text-white">
                   Name <span className=" ml-1 text-red-500">*</span>
                 </label>
                 <input
                   {...register("name")}
                   type="text"
                   placeholder="Name"
-                  className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-gray-200 "
+                  className="flex h-10 rounded-md border-2 border-input bg-background p-6 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-white placeholder:text-white"
                 />
                 <small className="text-red-500">{errors.name?.message}</small>
               </div>
               <div className=" flex flex-col items-start justify-start gap-2 ">
-                <label className=" text-sm font-medium text-white">
+                <label className=" text-sm font-semibold text-white">
                   Email <span className=" ml-1 text-red-500">*</span>
                 </label>
                 <input
                   {...register("email")}
                   type="text"
                   placeholder="Email"
-                  className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-gray-200 "
+                  className="flex h-10 rounded-md border-2 border-input bg-background p-6 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-white placeholder:text-white"
                 />
                 <small className="text-red-500">{errors.email?.message}</small>
               </div>
               <div className=" flex flex-col items-start justify-start gap-2 ">
-                <label className=" text-sm font-medium text-white">
+                <label className=" text-sm font-semibold text-white">
                   Phone <span className=" ml-1 text-red-500">*</span>
                 </label>
                 <input
                   {...register("phone")}
                   type="text"
                   placeholder="Phone"
-                  className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-gray-200 "
+                  className="flex h-10 rounded-md border-2 border-input bg-background p-6 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-white placeholder:text-white"
                 />
                 <small className="text-red-500">{errors.phone?.message}</small>
               </div>
               <div className=" flex flex-col items-start justify-start gap-2 ">
-                <label className=" text-sm font-medium text-white">
+                <label className=" text-sm font-semibold text-white">
                   Password <span className=" ml-1 text-red-500">*</span>
                 </label>
                 <input
                   {...register("password")}
                   type="password"
                   placeholder="Password"
-                  className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-gray-200 "
+                  className="flex h-10 rounded-md border-2 border-input bg-background p-6 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-inherit text-white border-white placeholder:text-white"
                 />
                 <small className="text-red-500">
                   {errors.password?.message}
@@ -137,8 +137,8 @@ const SignupComponent = () => {
                 <button onClick={(e) => {
                     e.preventDefault();
                     signIn("github");
-                  }} className=" bg-green-500 text-white font-semibold rounded-md w-full px-4 py-2">
-                  Continue with Google
+                  }} className=" bg-black text-white font-semibold rounded-md w-full px-4 py-2">
+                  Continue with Github
                 </button>
               </div>
             </form>

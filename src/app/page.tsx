@@ -105,12 +105,8 @@ export default function Home() {
 
   if (sessionSatatus === "authenticated") {
     return (
-      <div className="bg-slate-200 flex flex-col min-h-screen justify-start items-center gap-10">
+      <div className="bg-[#e13d48] flex flex-col min-h-screen justify-start items-center gap-10">
         <div className=" mt-10 w-2/3">
-          <h1 className=" text-black text-3xl text-center font-serif ">
-            Unveil Pokémon wonders in a click. Your Pokedex: where every catch
-            finds its niche.
-          </h1>
         </div>
         <div className="flex flex-col md:flex-row items-start justify-between w-11/12 md:w-2/3 px-5 md:px-10">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-start gap-5 w-full md:w-1/2">
@@ -143,8 +139,8 @@ export default function Home() {
                 setUniqueIds(new Set());
                 setSelectedSearchTerm(searchTerm);
               }}
-              className="px-4 rounded-md items-center bg-blue-500 text-white w-full md:w-auto"
-            >
+              className="flex items-center justify-center bg-white text-black font-semibold rounded-md  border border-gray-800 px-4 py-2 hover:bg-white hover:text-black hover:border-none"
+                >
               Search
             </button>
           </div>
@@ -166,8 +162,8 @@ export default function Home() {
             onClick={() => {
               setPageNo((prevState) => prevState + 1);
             }}
-            className="bg-blue-600 text-white px-6 py-3 items-center justify-between rounded-lg mb-10"
-          >
+            className="flex items-center justify-center bg-white mb-10 text-black font-semibold rounded-md  border border-gray-800 px-4 py-2 hover:bg-white hover:text-black hover:border-none"
+                >
             See More Pokemon
           </button>
         )}

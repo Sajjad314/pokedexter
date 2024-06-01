@@ -16,7 +16,7 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <div className="bg-slate-600 text-neutral-100">
+    <div className="bg-[#e13d48] text-neutral-100 border-b border-white">
       <div className="container mx-auto px-10 flex items-center justify-between py-4">
         <Link
           href="/"

@@ -66,8 +66,8 @@ export default function Home() {
 
   if (sessionSatatus === "authenticated") {
     return (
-      <div className="bg-slate-200 flex flex-col min-h-screen justify-center items-center gap-10">
-        <div className="flex flex-col gap-2 items-center mt-10">
+      <div className="bg-[#e13d48] flex flex-col min-h-screen justify-center items-center gap-10">
+        <div className="flex flex-col gap-2 items-center mt-10 text-white">
           <Image
             src={
               session?.user && session?.user.image ? session?.user.image : img
@@ -78,12 +78,12 @@ export default function Home() {
           <h1 className="text-2xl font-bold">
             {session?.user && session?.user.name}
           </h1>
-          <p className="text-gray-500">
+          <p>
             {session?.user && session?.user.email}
           </p>
         </div>
 
-        <h2 className="text-2xl font-semibold mb-4 border-b-2 pb-3 px-3 border-gray-700">
+        <h2 className="text-2xl font-semibold mb-4 border-b-2 pb-3 px-3 text-white border-white">
           Favorite Pokémon
         </h2>
         {/* <div className="flex flex-row items-start justify-between w-2/3 mx-auto">
